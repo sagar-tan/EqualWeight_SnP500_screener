@@ -17,6 +17,7 @@ ALLOW_FRACTIONAL = False # True means fractional shares allocated
 #fetch Prices
 
 print("Downloading latest prices, this may take a few seconds...")
+symbols = [s.replace(".", "-") for s in symbols]
 prices = yf.download(symbols, period="1d")["Close"].iloc[0]
 
 df = pd.DataFrame({#making a table that stores the ticker and price values
@@ -24,6 +25,7 @@ df = pd.DataFrame({#making a table that stores the ticker and price values
     "Price": prices.values
 })
 
+df = df.dropna(subset=["Price"]) #Removing rows with missing prices
 # EQUAL Weights
 
 n = len(df)# finding out number of stocks in index
