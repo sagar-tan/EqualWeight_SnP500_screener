@@ -4,8 +4,8 @@ import math
 import lxml
 
 #get list
-url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
-table = pd.read_html(url, header = 0)[0]
+url = "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/master/data/constituents.csv"
+table = pd.read_csv(url)
 symbols = table["Symbol"].tolist()
 print(f"loaded {len(symbols)} tickers")
 
