@@ -9,6 +9,7 @@ def get_sp500_symbols():
     #converting the csv format to yfinance format
     symbols = [s.replace(".", "-") for s in symbols]
     return symbols
+
 def fetch_latest_prices(symbols):
     prices = yf.download(symbols, period = "1d", threads = True, auto_adjust = True, progress = False)
     if "Close" in prices:
@@ -17,7 +18,8 @@ def fetch_latest_prices(symbols):
         close = prices.iloc[0]
     df = pd.DataFrame({"Ticker": close.index, "Price": close.values})
     df = df.dropna(subset=["Price"])
-    return df
+    return df #simply returns the today's Prices in df table with ticker and price columns
+
 def fetch_fundamentals(symbols):
     infos = {}
     for s in symbols:
@@ -30,11 +32,12 @@ def fetch_fundamentals(symbols):
     df = pd.DataFrame.from_dict(infos, orient = 'index')
     df.index.name = 'Ticker'
     df.reset_index(inplace=True)
-    return df
+    return df #fetches fundamentals in a big table like market cap  trailing PE etc.
+
 def fetch_history(symbols, period= '1y'):
     hist = yf.download(symbols, period=period, auto_adjust = True, progress = False)
     if 'Close' in hist:
         return hist['Close']
-    return hist
+    return hist # fetching 1 year old data, for calculation of volatility and all
     
 
