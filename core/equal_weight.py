@@ -13,3 +13,4 @@ def apply_equal_weight(df, portfolio_size, allow_fractional = False):
     else:
         df['Shares'] = (df['Dollar_allocation']) / df['Price'].apply(lambda x: math.floor(x) if pd.notna(x) else 0)
     return df
+#simply calculates the weight for allocation of each stock
