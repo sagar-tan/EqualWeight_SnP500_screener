@@ -6,7 +6,7 @@ FILTERS = {
     "price": {"min_price":5, "max_price": None},
     "volatility": {"window_days":60, "max_vol": 0.05},
     "pe": {"max_pe":50},
-    "dividend": {"min_yeild":0.0},
+    "dividend": {"min_yield":0.0},
     "sector": {"include":None, "exclude":[]},
     "momentum": {"months":3, "min_return": 0.0},
     "volume": {"min_avg_volume":100000},
@@ -19,7 +19,7 @@ FILTERS = {
 PIPELINE = [
     "price",
     "volume",
-    "market_cap",
+    "marketcap",
     "pe",
     "dividend",
     "beta",

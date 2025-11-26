@@ -8,7 +8,7 @@ def summary_stats(df, portfolio_size):  #literally just tells the status of the 
     return{
         'n_stocks': len(df),
         'invested': invested,
-        'remaining_Cash': remaining,
+        'remaining_cash': remaining,
         'Total_Portfolio': portfolio_size
     }
 
